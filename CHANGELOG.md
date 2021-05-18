@@ -1,3 +1,10 @@
+## [1.0.3](https://github.com/seleb/draw-1-bit/compare/v1.0.2...v1.0.3) (2021-05-18)
+
+
+### Bug Fixes
+
+* bg not scaled properly ([253e6cb](https://github.com/seleb/draw-1-bit/commit/253e6cb4a480d58401939a33b5a03ca8232e98fc))
+
 ## [1.0.2](https://github.com/seleb/draw-1-bit/compare/v1.0.1...v1.0.2) (2021-05-18)
 
 
