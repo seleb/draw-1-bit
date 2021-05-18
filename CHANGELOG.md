@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/seleb/draw-1-bit/compare/v1.0.1...v1.0.2) (2021-05-18)
+
+
+### Bug Fixes
+
+* handling of defaults ([c710787](https://github.com/seleb/draw-1-bit/commit/c710787656f582bdd6ed057b446eba201783d2db))
+
 ## [1.0.1](https://github.com/seleb/draw-1-bit/compare/v1.0.0...v1.0.1) (2021-05-18)
 
 
