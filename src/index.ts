@@ -185,7 +185,7 @@ export default class Draw1Bit {
 		const r = Math.min(rx, ry);
 		this.context.translate((this.canvas.width - this.width * r) / 2, (this.canvas.height - this.height * r) / 2);
 		this.context.fillStyle = this.colorBg;
-		this.context.fillRect(0, 0, this.width, this.height);
+		this.context.fillRect(0, 0, this.width*r, this.height*r);
 		this.context.fillStyle = this.colorFill;
 		// fill
 		for (let y = 0; y < this.height; ++y) {
