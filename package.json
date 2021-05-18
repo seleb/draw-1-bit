@@ -1,0 +1,66 @@
+{
+  "name": "draw-1-bit",
+  "version": "1.0.0",
+  "description": "simple 1-bit 2D canvas drawing interface",
+  "main": "build/main/index.js",
+  "typings": "build/main/index.d.ts",
+  "module": "build/module/index.js",
+  "repository": "https://github.com/seleb/draw-1-bit",
+  "license": "MIT",
+  "keywords": [
+    "1-bit",
+    "canvas",
+    "drawing"
+  ],
+  "scripts": {
+    "build": "run-p build:*",
+    "build:main": "tsc -p tsconfig.json",
+    "build:module": "tsc -p tsconfig.module.json",
+    "build:doc": "typedoc src/ --out docs",
+    "test": "run-s test:*",
+    "test:lint": "eslint src --ext .ts",
+    "test:prettier": "prettier \"src/**/*.ts\" --list-different",
+    "postversion": "rm -rf build && rm -rf docs && npm run build"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^4.0.1",
+    "@typescript-eslint/parser": "^4.0.1",
+    "eslint": "^7.8.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-eslint-comments": "^3.2.0",
+    "eslint-plugin-import": "^2.22.0",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.1.1",
+    "typedoc": "^0.20.36",
+    "typescript": "^4.0.2"
+  },
+  "files": [
+    "build/main",
+    "build/module"
+  ],
+  "release": {
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      "@semantic-release/changelog",
+      "@semantic-release/npm",
+      "@semantic-release/github",
+      [
+        "@semantic-release/git",
+        {
+          "assets": [
+            "docs/*",
+            "CHANGELOG.md",
+            "package.json",
+            "package-lock.json"
+          ]
+        }
+      ]
+    ]
+  },
+  "prettier": {
+    "useTabs": true,
+    "singleQuote": true,
+    "printWidth": 160
+  }
+}
