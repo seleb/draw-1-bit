@@ -21,7 +21,18 @@ export default class Draw1Bit {
 	public colorHover: string;
 	public filled: Record<string, boolean | undefined>;
 	public locked: Record<string, boolean | undefined>;
-	constructor(options: {
+	constructor({
+		width,
+		height,
+		gridSize = 1,
+		gridLimit = 16,
+		colorBg = '#000',
+		colorFill = '#FFF',
+		colorGrid = '#333',
+		colorHover = '#333',
+		filled = {},
+		locked = {},
+	}: {
 		/** width of canvas in pixels */
 		width: number;
 		/** height of canvas in pixels */
@@ -73,17 +84,17 @@ export default class Draw1Bit {
 		this.px = -1;
 		this.py = -1;
 
-		this.width = options.width;
-		this.height = options.height;
-		this.gridSize = options.gridSize ?? 1;
-		this.gridLimit = options.gridLimit ?? 16;
-		this.colorBg = options.colorBg || '#000';
-		this.colorFill = options.colorFill || '#FFF';
-		this.colorGrid = options.colorGrid || '#333';
-		this.colorHover = options.colorHover || '#333';
+		this.width = width;
+		this.height = height;
+		this.gridSize = gridSize;
+		this.gridLimit = gridLimit;
+		this.colorBg = colorBg;
+		this.colorFill = colorFill;
+		this.colorGrid = colorGrid;
+		this.colorHover = colorHover;
 
-		this.filled = options.filled || {};
-		this.locked = options.locked || {};
+		this.filled = filled;
+		this.locked = locked;
 		this.render();
 	}
 
