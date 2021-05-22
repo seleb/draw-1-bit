@@ -135,8 +135,8 @@ export default class Draw1Bit {
 		y = Math.floor(y);
 		this.x = x;
 		this.y = y;
-		if (this.x === this.px && this.y === this.py && this.filling === this.pfilling) return;
-		if (this.x >= 0 && this.y >= 0 && this.x < this.width && this.y < this.height && !this.locked[k(x, y)]) {
+		if (x === this.px && y === this.py && this.filling === this.pfilling) return;
+		if (x >= 0 && y >= 0 && x < this.width && y < this.height && !this.locked[k(x, y)]) {
 			const value = this.filled[k(x, y)];
 			if (this.filling !== undefined && value !== this.filling) {
 				this.filled[k(this.x, this.y)] = this.filling;
