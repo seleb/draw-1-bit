@@ -1,3 +1,5 @@
+import bresenham from 'bresenham';
+
 function k(x: number, y: number) {
 	return [x, y].join(',');
 }
@@ -121,30 +123,41 @@ export default class Draw1Bit {
 		const ry = this.canvas.height / this.height;
 		const r = Math.min(rx, ry);
 
-		let x = (event.clientX - rect.left) / rect.width;
-		let y = (event.clientY - rect.top) / rect.height;
-		x -= 0.5;
-		y -= 0.5;
-		x *= rx / r;
-		y *= ry / r;
-		x += 0.5;
-		y += 0.5;
-		x *= this.width;
-		y *= this.height;
-		x = Math.floor(x);
-		y = Math.floor(y);
-		this.x = x;
-		this.y = y;
-		if (x === this.px && y === this.py && this.filling === this.pfilling) return;
-		if (x >= 0 && y >= 0 && x < this.width && y < this.height && !this.locked[k(x, y)]) {
-			const value = this.filled[k(x, y)];
-			if (this.filling !== undefined && value !== this.filling) {
-				this.filled[k(this.x, this.y)] = this.filling;
-				this.canvas.dispatchEvent(new CustomEvent('draw', { detail: { x, y, value: this.filling } }));
-			}
+		let nx = (event.clientX - rect.left) / rect.width;
+		let ny = (event.clientY - rect.top) / rect.height;
+		nx -= 0.5;
+		ny -= 0.5;
+		nx *= rx / r;
+		ny *= ry / r;
+		nx += 0.5;
+		ny += 0.5;
+		nx *= this.width;
+		ny *= this.height;
+		nx = Math.floor(nx);
+		ny = Math.floor(ny);
+		this.x = nx;
+		this.y = ny;
+		if (this.px === undefined) {
+			this.px = nx;
 		}
-		this.px = x;
-		this.py = y;
+		if (this.py === undefined) {
+			this.py = ny;
+		}
+		if (nx === this.px && ny === this.py && this.filling === this.pfilling) return;
+
+		if (this.filling !== undefined) {
+			bresenham(nx, ny, this.px, this.py, (x, y) => {
+				if (x >= 0 && y >= 0 && x < this.width && y < this.height && !this.locked[k(x, y)]) {
+					if (this.filled[k(x, y)] !== this.filling) {
+						this.filled[k(x, y)] = this.filling;
+						this.canvas.dispatchEvent(new CustomEvent('draw', { detail: { x, y, value: this.filling } }));
+					}
+				}
+			});
+		}
+
+		this.px = nx;
+		this.py = ny;
 		this.pfilling = this.filling;
 		this.render();
 	}

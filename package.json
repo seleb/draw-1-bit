@@ -23,6 +23,7 @@
     "postversion": "rm -rf build && rm -rf docs && npm run build"
   },
   "devDependencies": {
+    "@types/bresenham": "0.0.0",
     "@typescript-eslint/eslint-plugin": "^4.0.1",
     "@typescript-eslint/parser": "^4.0.1",
     "eslint": "^7.8.0",
@@ -62,5 +63,8 @@
     "useTabs": true,
     "singleQuote": true,
     "printWidth": 160
+  },
+  "dependencies": {
+    "bresenham": "0.0.4"
   }
 }
