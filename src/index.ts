@@ -165,6 +165,7 @@ export default class Draw1Bit {
 	private onDown = (event: MouseEvent) => {
 		if (event.button !== 0 || this.locked[k(this.x, this.y)]) return;
 		this.canvas.removeEventListener('mousemove', this.onCanvasMove);
+		this.canvas.removeEventListener('mouseout', this.onMouseOut);
 		window.addEventListener('mousemove', this.onWindowMove);
 		window.addEventListener('mouseup', this.onUp);
 		const value = !this.filled[k(this.x, this.y)];
@@ -176,8 +177,6 @@ export default class Draw1Bit {
 	private onMouseOut = () => {
 		this.x = -1;
 		this.y = -1;
-		this.px = -1;
-		this.py = -1;
 		this.render();
 	};
 
@@ -186,6 +185,7 @@ export default class Draw1Bit {
 		window.removeEventListener('mousemove', this.onWindowMove);
 		window.removeEventListener('mouseup', this.onUp);
 		this.canvas.addEventListener('mousemove', this.onCanvasMove);
+		this.canvas.addEventListener('mouseout', this.onMouseOut);
 		this.canvas.dispatchEvent(new CustomEvent('drawend', { detail: { x: this.x, y: this.y } }));
 	};
 
