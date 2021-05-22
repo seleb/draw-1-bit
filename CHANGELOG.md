@@ -1,3 +1,15 @@
+# [1.1.0](https://github.com/seleb/draw-1-bit/compare/v1.0.3...v1.1.0) (2021-05-22)
+
+
+### Bug Fixes
+
+* issue with position being lost when drawing off canvas ([878aaff](https://github.com/seleb/draw-1-bit/commit/878aaffe27fa2c4ff02691992f6755d2139b4e62))
+
+
+### Features
+
+* draw using bresenham instead of only filling individual pixels ([14f351c](https://github.com/seleb/draw-1-bit/commit/14f351cd19432933f216ea1344a84b292f6470eb))
+
 ## [1.0.3](https://github.com/seleb/draw-1-bit/compare/v1.0.2...v1.0.3) (2021-05-18)
 
 
