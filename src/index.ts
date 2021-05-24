@@ -116,25 +116,30 @@ export default class Draw1Bit {
 		this.move(event);
 	};
 
-	private move(event: MouseEvent) {
+	private getPos(event: MouseEvent) {
 		const rect = this.canvas.getBoundingClientRect();
 
 		const rx = this.canvas.width / this.width;
 		const ry = this.canvas.height / this.height;
 		const r = Math.min(rx, ry);
 
-		let nx = (event.clientX - rect.left) / rect.width;
-		let ny = (event.clientY - rect.top) / rect.height;
-		nx -= 0.5;
-		ny -= 0.5;
-		nx *= rx / r;
-		ny *= ry / r;
-		nx += 0.5;
-		ny += 0.5;
-		nx *= this.width;
-		ny *= this.height;
-		nx = Math.floor(nx);
-		ny = Math.floor(ny);
+		let x = (event.clientX - rect.left) / rect.width;
+		let y = (event.clientY - rect.top) / rect.height;
+		x -= 0.5;
+		y -= 0.5;
+		x *= rx / r;
+		y *= ry / r;
+		x += 0.5;
+		y += 0.5;
+		x *= this.width;
+		y *= this.height;
+		x = Math.floor(x);
+		y = Math.floor(y);
+		return [x, y];
+	}
+
+	private move(event: MouseEvent) {
+		const [nx, ny] = this.getPos(event);
 		this.x = nx;
 		this.y = ny;
 		if (nx === this.px && ny === this.py && this.filling === this.pfilling) return;
