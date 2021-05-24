@@ -137,12 +137,6 @@ export default class Draw1Bit {
 		ny = Math.floor(ny);
 		this.x = nx;
 		this.y = ny;
-		if (this.px === undefined) {
-			this.px = nx;
-		}
-		if (this.py === undefined) {
-			this.py = ny;
-		}
 		if (nx === this.px && ny === this.py && this.filling === this.pfilling) return;
 
 		if (this.filling !== undefined) {
