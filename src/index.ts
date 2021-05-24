@@ -213,8 +213,8 @@ export default class Draw1Bit {
 		}
 		// hover
 		this.context.globalCompositeOperation = 'difference';
-		this.context.fillStyle = this.colorHover;
 		if (this.hovered && this.x >= 0 && this.y >= 0 && this.x < this.width && this.y < this.height && !this.locked[k(this.x, this.y)]) {
+			this.context.fillStyle = this.colorHover;
 			this.context.fillRect(this.x * r, this.y * r, 1 * r, 1 * r);
 		}
 		// gridlines
