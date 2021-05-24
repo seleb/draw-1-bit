@@ -9,10 +9,10 @@ export default class Draw1Bit {
 	public context: CanvasRenderingContext2D;
 	private width: number;
 	private height: number;
-	private x: number;
-	private y: number;
-	private px: number;
-	private py: number;
+	private x = -1;
+	private y = -1;
+	private px = -1;
+	private py = -1;
 	private pfilling: boolean | undefined;
 	private filling: boolean | undefined;
 	public gridSize: number;
@@ -80,11 +80,6 @@ export default class Draw1Bit {
 		if (!context) throw new Error("Couldn't create 2D canvas context");
 		this.context = context;
 		this.context.imageSmoothingEnabled = false;
-
-		this.x = -1;
-		this.y = -1;
-		this.px = -1;
-		this.py = -1;
 
 		this.width = width;
 		this.height = height;
