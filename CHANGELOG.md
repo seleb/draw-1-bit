@@ -1,3 +1,11 @@
+## [1.1.1](https://github.com/seleb/draw-1-bit/compare/v1.1.0...v1.1.1) (2021-05-24)
+
+
+### Bug Fixes
+
+* don't set hover colour unless drawing hover ([367cb42](https://github.com/seleb/draw-1-bit/commit/367cb425076d3f77e0dae1b02f1b939366449cb4))
+* hover not showing up until second pixel hovered ([d57dca1](https://github.com/seleb/draw-1-bit/commit/d57dca146a0083393985dee666d69d9c34dc3d96))
+
 # [1.1.0](https://github.com/seleb/draw-1-bit/compare/v1.0.3...v1.1.0) (2021-05-22)
 
 
