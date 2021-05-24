@@ -15,6 +15,7 @@ export default class Draw1Bit {
 	private py = -1;
 	private pfilling: boolean | undefined;
 	private filling: boolean | undefined;
+	private hovered = false;
 	public gridSize: number;
 	public gridLimit: number;
 	public colorBg: string;
@@ -137,7 +138,12 @@ export default class Draw1Bit {
 		const [nx, ny] = this.getPos(event);
 		this.x = nx;
 		this.y = ny;
-		if (nx === this.px && ny === this.py && this.filling === this.pfilling) return;
+		const phovered = this.hovered;
+		this.hovered = nx >= 0 && ny >= 0 && nx < this.width && ny < this.height;
+		if (nx === this.px && ny === this.py && this.filling === this.pfilling) {
+			if (phovered !== this.hovered) this.render();
+			return;
+		}
 
 		if (this.filling !== undefined) {
 			bresenham(nx, ny, this.px, this.py, (x, y) => {
@@ -169,8 +175,7 @@ export default class Draw1Bit {
 	};
 
 	private onMouseOut = () => {
-		this.x = -1;
-		this.y = -1;
+		this.hovered = false;
 		this.render();
 	};
 
@@ -209,7 +214,7 @@ export default class Draw1Bit {
 		// hover
 		this.context.globalCompositeOperation = 'difference';
 		this.context.fillStyle = this.colorHover;
-		if (this.x >= 0 && this.y >= 0 && this.x < this.width && this.y < this.height && !this.locked[k(this.x, this.y)]) {
+		if (this.hovered && this.x >= 0 && this.y >= 0 && this.x < this.width && this.y < this.height && !this.locked[k(this.x, this.y)]) {
 			this.context.fillRect(this.x * r, this.y * r, 1 * r, 1 * r);
 		}
 		// gridlines
